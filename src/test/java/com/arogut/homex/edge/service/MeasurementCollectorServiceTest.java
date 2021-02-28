@@ -35,7 +35,7 @@ class MeasurementCollectorServiceTest {
         edgeProperties.getContract().setMeasurements(Set.of(temp, hum));
         MeasurementCollectorService collectorService = new MeasurementCollectorService(edgeProperties);
 
-        List<Measurement<?>> contractMeasurements = collectorService.getMeasurement();
+        List<Measurement<Double>> contractMeasurements = collectorService.getMeasurement();
 
         Assertions.assertThat(contractMeasurements)
                 .extracting("name")

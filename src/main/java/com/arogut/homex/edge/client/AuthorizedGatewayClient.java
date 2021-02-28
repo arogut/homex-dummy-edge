@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 public interface AuthorizedGatewayClient {
 
     @PostMapping("/devices/{id}/measurement")
-    Mono<String> sendMessage(@RequestBody DeviceMessage message, @PathVariable String id);
+    Mono<String> sendMessage(@RequestBody DeviceMessage<?> message, @PathVariable String id);
 
     @GetMapping("/devices/auth/refresh")
     Mono<RegistrationResponse> refresh();

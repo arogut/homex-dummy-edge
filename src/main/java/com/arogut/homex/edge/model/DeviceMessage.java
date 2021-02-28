@@ -10,9 +10,9 @@ import java.util.List;
 @Value
 @Builder
 @AllArgsConstructor
-public class DeviceMessage {
+public class DeviceMessage<T> {
 
     String deviceId;
     long measuredTime;
-    List<Measurement<?>> data;
+    List<Measurement<T>> data;
 }

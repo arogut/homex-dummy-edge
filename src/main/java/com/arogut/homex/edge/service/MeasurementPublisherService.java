@@ -30,7 +30,7 @@ public class MeasurementPublisherService {
         return Flux.interval(Duration.ofMillis(edgeProperties.getPublishDelay()), Duration.ofMillis(edgeProperties.getPublishPeriod()))
                 .filter(l -> registrationDetails.isAuthorized())
                 .map(l -> collectorService.getMeasurement())
-                .map(m -> DeviceMessage.builder()
+                .map(m -> DeviceMessage.<Double>builder()
                         .deviceId(edgeProperties.getDeviceMetadata().getId())
                         .measuredTime(System.currentTimeMillis())
                         .data(m)

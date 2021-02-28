@@ -1,11 +1,14 @@
 package com.arogut.homex.edge;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 
 @Slf4j
+@NoArgsConstructor(access = AccessLevel.NONE)
 public class Utils {
 
     public static String getMacAddress() {

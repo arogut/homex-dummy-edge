@@ -24,7 +24,7 @@ public class GatewayService {
         return authorizedGatewayClient.refresh();
     }
 
-    public Mono<String> sendMessage(DeviceMessage message) {
+    public Mono<String> sendMessage(DeviceMessage<?> message) {
         return authorizedGatewayClient.sendMessage(message, message.getDeviceId());
     }
 }

@@ -16,15 +16,16 @@ public class MeasurementCollectorService {
 
     private final EdgeProperties edgeProperties;
 
-    public List<Measurement<?>> getMeasurement() {
+    public List<Measurement<Double>> getMeasurement() {
         return edgeProperties.getContract().getMeasurements()
                 .stream()
                 .map(this::generateValue)
                 .collect(Collectors.toList());
     }
 
-    private Measurement<?> generateValue(Contract.Measurement measurement) {
-        return Generators.DoubleGenerator.get().generateValue(measurement);
+    private Measurement<Double> generateValue(Contract.Measurement measurement) {
+        return Generators.DOUBLE_GENERATOR.get()
+                .generateValue(measurement);
     }
 
 }
