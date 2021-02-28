@@ -24,7 +24,7 @@ public class MeasurementCollectorService {
     }
 
     private Measurement<Double> generateValue(Contract.Measurement measurement) {
-        return Generators.DOUBLE_GENERATOR.get()
+        return Generators.DOUBLE_GENERATOR
                 .generateValue(measurement);
     }
 

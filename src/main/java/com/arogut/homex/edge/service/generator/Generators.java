@@ -8,23 +8,11 @@ import java.util.Random;
 import java.util.function.Supplier;
 
 @RequiredArgsConstructor
-public enum Generators implements Supplier<Generators.Generator<Double>> {
-    DOUBLE_GENERATOR(DoubleGenerator::new);
+public enum Generators {
 
-    @Override
-    public Generator<Double> get() {
-        return factory.get();
-    }
+    DOUBLE_GENERATOR {
 
-    private final Supplier<Generator<Double>> factory;
-
-    public interface Generator<T> {
-        Measurement<T> generateValue(Contract.Measurement measurement);
-    }
-
-    static class DoubleGenerator implements Generator<Double> {
-
-        Random r = new Random();
+        final Random r = new Random();
 
         @Override
         public Measurement<Double> generateValue(Contract.Measurement measurement) {
@@ -33,5 +21,7 @@ public enum Generators implements Supplier<Generators.Generator<Double>> {
                     .value(measurement.getMin() + (measurement.getMax() - measurement.getMin()) * r.nextDouble())
                     .build();
         }
-    }
+    };
+
+    public abstract <T> Measurement<T> generateValue(Contract.Measurement measurement);
 }
